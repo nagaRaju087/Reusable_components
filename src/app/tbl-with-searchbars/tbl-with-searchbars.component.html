@@ -4,8 +4,8 @@
         <div class="d-flex justify-content-end">
             <span class="input-group" style=" width: 390px;height:36px;border-color: #fff; border-width : 0;">
                 <input type="search" name="search" class="form-control" placeholder="Search" [(ngModel)]="Usersearch"
-                    #userSearch (keyup.enter)="userApi(userSearch.value, '')">
-                <button type="submit" id="Searchimg" class="searchbutton" (click)="userApi('', '')"></button>
+                    #userSearch (keyup.enter)="search(userSearch.value, '')">
+                <button type="submit" id="Searchimg" class="searchbutton" (click)="search('', '')"></button>
             </span>
         </div>
     </div>
