@@ -1,0 +1,96 @@
+   <span class="d-flex justify-content-center">
+    <div class="card outerLayerStyle">
+    <div class="d-flex justify-content-start autoHeight" *ngIf="selectedvalues.length >0">
+      <div *ngFor="let selectedvalue of selectedvalues">
+        <div class="pills searchabovepills">
+          <div class="d-flex justify-content-center">
+            <div>{{selectedvalue.key}}:</div>
+            <div>&nbsp;{{selectedvalue.value}}&nbsp;</div>
+            <div class="ml-5" (click)="popvalue(selectedvalue)">&times;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-start">
+      <div class="d-flex justify-content-start searchmargincss">
+        <div class="search-container">
+        <form [formGroup]="searchform" class="form-inline" (ngSubmit)="submitvalues()">
+          <input
+            maxlength="60"
+            minlength="10"
+            id="text"
+            type="text"
+            autocomplete="off"
+            formControlName="suggestionSearch"
+            placeholder="Search...."
+            required
+            (input)="onSearchInput($event)"
+            class="inputcss"
+          />
+          <div class="outerDivofbutton">
+            <button type="submit" class="pills btn btn-primary">search</button>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</span>
+<div class="d-flex justify-content-center" *ngIf="showSuggestions">
+<div class="autocomplete-list">
+  <span *ngFor="let result of searchResult" (click)="selectSuggestion(result)">
+    <li class="ml-3">search By {{ result.name }}</li>
+  </span>
+</div>
+</div>
+  <br>
+  <div class="d-flex justify-content-start autoHeight">
+    <div *ngFor="let selectedvalue of submittedDatatwo">
+      <div class="pills visiblesuggestion">
+        <div class="d-flex justify-content-center">
+          <div>{{selectedvalue.key}}:</div>
+          <div>&nbsp;{{selectedvalue.value}}</div>
+          <div (click)="popvalueofAdvfil(selectedvalue)">&times;</div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let selectedvalue of visible_searchResult">
+      <div class="pills visiblesuggestion">
+        <div class="d-flex justify-content-center">
+          <div>{{selectedvalue.key}}:</div>
+          <div>&nbsp;{{selectedvalue.value}}</div>
+          <div (click)="popvalue(selectedvalue)">&times;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<table class="table table-responsive-lg-12-12">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>Address</th>
+        <th>Age</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.sno }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.gender }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="ml-3"> 
+    <b>advance filter</b>
+  </span>
+  <button (click)="openDialog()">
+    <img src="../../assets/filterimg.png" style="width: 15px;"> 
+  </button>

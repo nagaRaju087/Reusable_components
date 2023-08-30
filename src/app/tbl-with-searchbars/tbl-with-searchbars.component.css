@@ -1,0 +1,87 @@
+  #Searchimg {
+    background-size: 22px;
+    position: relative;
+    background-image: url(../../assets/search_icon@3x.png);
+    background-repeat: no-repeat;
+    background-position: 51%;
+      padding-right: 34px;
+      margin-top: -6px;
+  }
+  .searchbutton{
+    height: 36px;
+    border: none;
+    background-color: #fff;
+    margin-left: 0px;
+    margin-right: 18px;border-radius: 5px;
+  }
+
+
+  .suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none; /* Remove the border at the top */
+    max-height: 200px;
+    overflow-y: auto;
+    width: 360px;
+    position: absolute; /* Position the suggestions absolutely */
+    z-index: 1; /* Ensure it's above other elements */
+    background-color: white; /* Match your background color */
+    top: 100%; /* Position it below the search input field */
+}
+
+  
+  
+  .suggestions li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+
+  .container-fluid {
+    max-width: 100%; /* Ensure it doesn't go beyond the viewport width */
+    padding: 0; /* Remove any default padding */
+  }
+  
+  .table {
+    width: 100%;
+    overflow-x: auto; /* Add horizontal scrollbar if necessary */
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+  }
+  
+  @media (max-width: 768px) {
+    /* Example: Modify styles for screens smaller than 768px */
+    .table {
+      width: 100%;
+      overflow-x: auto; /* Add horizontal scrollbar if necessary */
+    }
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f2f2f2;
+    }
+  }
+  .rowclass{
+    margin-right: 0px;
+    margin-left: 0px;
+  }

@@ -1,0 +1,147 @@
+<nav class="navbar navbar-expand-lg navbar-light main" style="background-color: aquamarine;">
+    <div class=" col-3 d-flex flex-row m-1">
+      <span class=""><img src="../../assets/angular icon.png" class="navicon" /></span>
+    </div>
+  
+    <div class="col">
+      <ul class="nav justify-content-center" *ngIf="show" id="nav1">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/navbar/table"
+            ><span class="home">Table</span></a
+          >
+        </li>
+  
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/navbar/exporttable"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            ><span class="home">Export Table</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/navbar/tablewithsearchbars"
+            ><span class="home">Table With Search bar</span></a
+          >
+        </li>
+      </ul>
+    </div>
+  
+    <div class="col-md-end">
+      <span class="navbar" style="margin-top: 10px;">
+        <form class="form-inline">
+          <div style="margin-right: 20px; font-size: 10px">
+            <img src="../../assets/Shape (2).png" />
+          </div>
+          <div style="margin-right: 20px; font-size: 10px">
+            <img src="../../assets/noun-help-1009840.png" />
+          </div>
+  
+          <div class="mr-2">
+            <img
+              src="../../assets/Rectangle.png"
+              style="height: 40px; width: 40px" class="profile"
+            />
+          </div>
+          <div class="dropdown mr-5" style="background-color: transparent;border: none;">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-offset="0,0" style="background-color: transparent;border: none;color: black;">
+              UserName
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">log out</a>
+            </div>
+          </div>
+        </form>
+      </span>
+    </div>
+</nav>
+  
+  <nav class="navbar navbar-expand-lg navbar-light" id="main1">
+    <div class="w-100">
+      <div class="row">
+        <div class="col">
+          <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+  
+            <ul class="c" *ngIf="show" id="menu">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLinkActive="active"
+                  routerLink="/navbar/table"
+                >
+                  <p class="home1">Table</p>
+                  <p></p
+                ></a>
+              </li>
+  
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/navbar/exporttable"
+                  routerLinkActive="active"
+                  ariaCurrentWhenActive="page"
+                >
+                  <p class="home1">Export Table</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLinkActive="active"
+                  routerLink="/navbar/tablewithsearchbars"
+                >
+                  <p class="home1">Table With Search bar</p>
+                </a>
+              </li>
+  
+            </ul>
+          </div>
+  
+          <span class=""
+            ><img src="../../assets/angular icon.png" class="navicon"
+          /></span>
+        </div>
+        <div class="col-md-end">
+            <form class="form-inline mt-5">
+            <div class="mobileIcon">
+                <img src="../../assets/Shape (2).png" />
+              </div>
+              <div class="mobileIcon">
+                <img src="../../assets/noun-help-1009840.png" />
+              </div>
+              <div class="dropdown mr-5" style="background-color: transparent;border: none;">
+                <div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-offset="0,0">
+                    <img
+                      src="../../assets/Rectangle.png"
+                      style="height: 30px; width: 30px;margin-left: -30px;margin-top: -20px;" class="profile"
+                    />
+                  </div>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">log out</a>
+                </div>
+              </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  <footer class="bg-light" class="Stickyfooter">
+    <div class="text-center" style="background-color: #1c1e42; color: white">
+      <div  class="pt-2" style="height: 25px;">
+        {{footer_content}}
+      </div>
+    </div>
+  </footer>
+  

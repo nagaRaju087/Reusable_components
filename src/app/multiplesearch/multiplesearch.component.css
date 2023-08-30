@@ -1,0 +1,124 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+  }
+  .search-container {
+    position: relative;
+  }
+  .pills{
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+  .input-with-div {
+    position: relative;
+    display: inline-block;
+  }
+  .selectedvalues{
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+  .input-with-div .custom-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .input-with-div input {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .outerLayerStyle{
+    height:auto !important;
+    width: auto;
+    border-radius: 16px;
+    margin-left: 10px;
+  }
+  .searchabovepills{
+    background-color: black;
+    color: white;
+    width: auto !important;
+    padding: 3px 8px;
+    border-radius: 16px;
+  }
+  .searchmargincss{
+    margin-left: 20px;
+    margin-top: 8px;
+  }
+  .inputcss{
+    width: 260px; 
+    border: none;
+    outline: none;
+  }
+  
+  .outerDivofbutton{
+    margin-right: 0px;
+   }
+
+  .visiblesuggestion{
+    background-color: gray;
+    color: lightblue;
+    width: auto !important;
+    padding: 5px 20px;
+  }
+  .autoHeight{
+    height: auto;
+  }
+
+  .search-container {
+    position: relative;
+  }
+  
+  .autocomplete-list {
+    position: absolute;
+    list-style: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    width: 335px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 2;
+  } 
+
+  .advfilter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

@@ -1,0 +1,50 @@
+.container-fluid {
+  max-width: 100%; /* Ensure it doesn't go beyond the viewport width */
+  padding: 0; /* Remove any default padding */
+}
+
+.table {
+  width: 100%;
+  overflow-x: auto; /* Add horizontal scrollbar if necessary */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+th {
+  text-align: left;
+  padding: 10px; /* Adjust as needed */
+}
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+  }
+}
+.rowclass{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.fullwidthscroll{
+  width: 100%;
+  overflow: scroll;
+}
+.sortimg{
+  width: 15px;
+  float: right;
+}
+.nostringspit{
+  white-space: nowrap
+}

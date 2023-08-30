@@ -1,0 +1,21 @@
+<div class="container" #scrollContainer>
+    <div class="nav-buttons left">
+      <a class="prev" (click)="goPrevious()">
+        <img src="../../assets/arrow images.png" class="leftIcon">
+    </a>
+    </div>
+    <div class="box" *ngFor="let card of cards">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{card}}</h5>
+          <p class="card-text">nothing to display here</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="nav-buttons right">
+      <a class="next" (click)="goNext()">
+        <img src="../../assets/arrow images.png" class="rightIcon">
+      </a>
+    </div>
+  </div>

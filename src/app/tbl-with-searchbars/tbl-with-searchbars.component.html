@@ -1,0 +1,180 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col">
+        <div class="d-flex justify-content-end">
+            <span class="input-group" style=" width: 390px;height:36px;border-color: #fff; border-width : 0;">
+                <input type="search" name="search" class="form-control" placeholder="Search" [(ngModel)]="Usersearch"
+                    #userSearch (keyup.enter)="userApi(userSearch.value, '')">
+                <button type="submit" id="Searchimg" class="searchbutton" (click)="userApi('', '')"></button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row rowclass container-fluid">
+    <div class="col" style="width: 100%;overflow: scroll;">
+        <table class="table table-responsive-lg-12">
+            <thead class="table-secondary">
+                <tr>
+                    <th>S.No</th>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Age
+                    </th>
+                    <th scope="col">
+                        Gender
+                    </th>
+                    <th>
+                        DOB
+                    </th>
+                    <th scope="col">
+                        Mobile
+                    </th>
+                    <th scope="col">Mail</th>
+                    <th>Blood Group</th>
+                    <th>College</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let user of data?.users">
+                    <td>
+                        {{user.id}}
+                    </td>
+                    <td>
+                        <p>
+                            {{user.lastName}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.age}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.gender}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.birthDate}}
+                        </p>
+                    </td>
+                    <td>
+                        {{user.phone}}
+                    </td>
+                    <td>
+                        <p>{{user.email}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.bloodGroup}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.university}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<!-- ------------------------------give the search result as suggestions----------------------------- -->
+<div class="row container-fluid">
+    <div class="col">
+        <div class="d-flex justify-content-center">
+            <span style="width: auto; height: 36px; border-color: #fff;">
+                <form [formGroup]="searchform">
+                  <input
+                    class="form-control"
+                    maxlength="60"
+                    minlength="10"
+                    id="text"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="suggestionSearch"
+                    placeholder="Search"
+                    required
+                    (input)="onSearchInput($event)"
+                    style="width: 360px"
+                  />
+                  <ul *ngIf="showSuggestions" class="suggestions">
+                    <li *ngFor="let clg of searchResult" (click)="selectSuggestion(clg)">{{ clg }}</li>
+                  </ul>
+                </form>
+              </span>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row rowclass container-fluid">
+    <div class="col" style="width: 100%;overflow: scroll;">
+        <table class="table table-responsive-lg-12">
+            <thead class="table-secondary">
+                <tr>
+                    <th>S.No</th>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Age
+                    </th>
+                    <th scope="col">
+                        Gender
+                    </th>
+                    <th>
+                        DOB
+                    </th>
+                    <th scope="col">
+                        Mobile
+                    </th>
+                    <th scope="col">Mail</th>
+                    <th>Blood Group</th>
+                    <th>College</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let user of data?.users">
+                    <td>
+                        {{user.id}}
+                    </td>
+                    <td>
+                        <p>
+                            {{user.lastName}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.age}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.gender}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.birthDate}}
+                        </p>
+                    </td>
+                    <td>
+                        {{user.phone}}
+                    </td>
+                    <td>
+                        <p>{{user.email}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.bloodGroup}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.university}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<br>

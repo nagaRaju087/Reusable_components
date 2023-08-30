@@ -1,0 +1,152 @@
+<!-- ---------------------------basic table---------------------- -->
+<div class="container-fluid">
+<div style="min-height: 100vh">
+<div class="row rowclass">
+    <div class="col fullwidthscroll">
+        <table class="table table-responsive-lg-12-12">
+            <thead class="table-secondary">
+                <tr>
+                    <th>S.No</th>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Age
+                    </th>
+                    <th scope="col">
+                        Gender
+                    </th>
+                    <th>
+                        DOB
+                    </th>
+                    <th scope="col">
+                        Mobile
+                    </th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">College</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr *ngFor="let user of data?.users">
+                    <td>
+                        {{user.id}}
+                    </td>
+                    <td>
+                        <p>
+                            {{user.lastName}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.age}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.gender}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user.birthDate}}
+                        </p>
+                    </td>
+                    <td>
+                        {{user.phone}}
+                    </td>
+                    <td>
+                        <p>{{user.email}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.bloodGroup}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.university}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- -------------------------- sorted table------------------------ -->
+<br>
+<div class="row rowclass">
+    <div class="col fullwidthscroll">
+        <table class="table table-responsive-lg-12-12">
+            <thead class="table-secondary">
+                <tr>
+                    <th>S.No</th>
+                    <th scope="col">
+                        Name
+                        <span><img src="../../assets/upanddownArrow.png" class="sortimg" (click)="sortItem('nameSort',nameSort)"></span>
+                    </th>
+                    <th scope="col">
+                        Age
+                    </th>
+                    <th scope="col">
+                        Gender
+                    </th>
+                    <th scope="col">
+                        DOB
+                        <img src="../../assets/upanddownArrow.png" class="sortimg" (click)="sortItem('dobSort',dobSort)">
+                    </th>
+                    <th scope="col">
+                    <div>
+                         Mobile
+                        <img src="../../assets/upanddownArrow.png" class="sortimg" (click)="sortItem('mobileSort',mobileSort)">
+                    </div>
+                    </th>
+                    <th scope="col">Mail
+                    </th>
+                    <th scope="col"> Blood Group
+                    </th >
+                    <th scope="col">College
+                    </th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr *ngFor="let user of data?.users">
+                    <td>
+                        {{user?.id}}
+                    </td>
+                    <td>
+                        <p>
+                            {{user?.lastName}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user?.age}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            {{user?.gender}}</p>
+                    </td>
+                    <td>
+                        <p class="nostringspit">
+                            {{user?.birthDate}}
+                        </p>
+                    </td>
+                    <td class="nostringspit">
+                        {{user?.phone}}
+                    </td>
+                    <td>
+                        <p>{{user?.email}}</p>
+                    </td>
+                    <td>
+                        <p>{{user?.bloodGroup}}</p>
+                    </td>
+                    <td>
+                        <p>{{user?.university}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+

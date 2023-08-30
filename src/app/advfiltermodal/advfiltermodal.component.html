@@ -1,0 +1,34 @@
+<div class="container">
+  <form [formGroup]="Advfilterform" (ngSubmit)="SearchAdvFilterSubmission()">
+    <span>
+      <div>Mobile Numebr</div>
+      <input type="text" appNumbersOnly class="form-control" formControlName="Mobile">
+    </span><br>
+    <span>
+      <div>Created Date</div>
+      <input type="date" class="form-control" formControlName="createdDate">
+    </span><br>
+    <span>
+      <div>Updated Date</div>
+      <input type="date" class="form-control" formControlName="updatedData">
+    </span><br>
+    <span>
+      <div>User name</div>
+      <select formControlName="username" placeholder="Select UserName">
+        <option value="" disabled selected>&nbsp;Select username</option>
+        <option *ngFor="let name of Usernames" value="{{name}}">{{name}}</option>
+      </select>
+      <br>
+    </span><br>
+    <label>
+      <input type="radio" formControlName="gender" value="male">male
+    </label>
+    <label>
+      <input type="radio" formControlName="gender" value="Female">Female
+    </label>
+    <br>
+    <div>
+      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    </div>
+  </form>
+</div>
