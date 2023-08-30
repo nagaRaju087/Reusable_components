@@ -38,7 +38,7 @@ export class TblWithSearchbarsComponent implements OnInit{
         }
       );
   }
-  userApi(userSearch: string, num: any) {
+  search(userSearch: string, num: any) {
     console.log("this is corresponding search",this.Usersearch);
     let userBody;
     let regEx =  /^[a-zA-Z][a-zA-Z0-9\s]*$/;
