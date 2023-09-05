@@ -167,10 +167,19 @@ export class MultiplesearchComponent {
     this.showSuggestions = false;
   }
   popvalue(deletedvalue: any) {
+    console.log("this console is for pop vlaues",deletedvalue);
+    
     var indexs = this.selectedvalues.indexOf(deletedvalue);
     this.selectedvalues.splice(indexs, 1);
     var index2 = this.visible_searchResult.indexOf(deletedvalue);
     this.visible_searchResult.splice(index2, 1);
+    let body={
+      searchedelements:this.visible_searchResult
+    }
+    this.api.sortAPIcall(body).subscribe((response) => {
+    })
+  }
+  popvalueadvfilter(deletedvalue: any) {
     var index3 = this.submittedDatatwo.indexOf(deletedvalue);
     this.submittedDatatwo.splice(index3, 1);
     let body={
