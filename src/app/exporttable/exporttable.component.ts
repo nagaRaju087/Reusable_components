@@ -115,6 +115,4 @@ export class ExporttableComponent {
     });
     doc.save('usersdata.pdf');
   }
-
-  
 }
