@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { AdvfiltermodalComponent } from '../advfiltermodal/advfiltermodal.component';
 import { ModalDataService } from '../modal-data.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs';
 import { ApiserviceService } from '../apiservice.service';
 
 
@@ -51,8 +48,8 @@ export class MultiplesearchComponent {
   showSuggestions = false;
   searchResult: any = [];
   visible_searchResult: any = [];
-  submittedDataone: any = [];
-  submittedDatatwo: any = [];
+  SubmittedDataOfAdvfilter: any = [];
+  FilteredData: any = [];
   Searchideas: any = [];
   selectedvalues: any = [];
   updatedselectedvalues: any[] = [];
@@ -138,14 +135,6 @@ export class MultiplesearchComponent {
         this.Searchideas.push(item)
       }
     }
-    // for(let duplicateremoval of this.selectedvalues){
-    //   for(let duplicateremoval2 of this.Searchideas){
-    //     if(duplicateremoval.key.includes(duplicateremoval2.name)){
-    //       var indexs = this.Searchideas.indexOf(duplicateremoval2);
-    //       this.Searchideas.splice(indexs, 1);
-    //     }
-    //   }
-    // }
     return this.Searchideas
   }
 
@@ -167,8 +156,6 @@ export class MultiplesearchComponent {
     this.showSuggestions = false;
   }
   popvalue(deletedvalue: any) {
-    console.log("this console is for pop vlaues",deletedvalue);
-    
     var indexs = this.selectedvalues.indexOf(deletedvalue);
     this.selectedvalues.splice(indexs, 1);
     var index2 = this.visible_searchResult.indexOf(deletedvalue);
@@ -180,8 +167,8 @@ export class MultiplesearchComponent {
     })
   }
   popvalueadvfilter(deletedvalue: any) {
-    var index3 = this.submittedDatatwo.indexOf(deletedvalue);
-    this.submittedDatatwo.splice(index3, 1);
+    var index3 = this.FilteredData.indexOf(deletedvalue);
+    this.FilteredData.splice(index3, 1);
     let body={
       searchedelements:this.visible_searchResult
     }
@@ -194,25 +181,25 @@ export class MultiplesearchComponent {
   openDialog() {
     let data: { [key: string]: string } = {};
 
-    for (const pair of this.submittedDatatwo) {
+    for (const pair of this.FilteredData) {
       data[pair.key] = pair.value;
     }
     this.ModeldataService.setData(data);
     this.ModeldataService.openDialog(data, AdvfiltermodalComponent, 'auto');
     this.ModeldataService.getfilterData().subscribe((res) => {
-      this.submittedDataone = res[res.length-1];
+      this.SubmittedDataOfAdvfilter = res[res.length-1];
  
       const key_value_pairs: { key: string, value: string }[] = [];
 
-      for (const key in this.submittedDataone) {
-        if (this.submittedDataone.hasOwnProperty(key) && this.submittedDataone?.[key] !== undefined) {
-          key_value_pairs.push({ key: key, value: this.submittedDataone?.[key] });
+      for (const key in this.SubmittedDataOfAdvfilter) {
+        if (this.SubmittedDataOfAdvfilter.hasOwnProperty(key) && this.SubmittedDataOfAdvfilter?.[key] !== undefined) {
+          key_value_pairs.push({ key: key, value: this.SubmittedDataOfAdvfilter?.[key] });
         }
       }
 
-      this.submittedDatatwo = key_value_pairs;
+      this.FilteredData = key_value_pairs;
       let body={
-        searchedelements:this.submittedDatatwo
+        searchedelements:this.FilteredData
       }
       this.api.sortAPIcall(body).subscribe((response) => {
       })

@@ -1,10 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
 import { ModalDataService } from '../modal-data.service';
 import { Router } from '@angular/router';
-import { MultiplesearchComponent } from '../multiplesearch/multiplesearch.component';
 
 @Component({
   selector: 'app-advfiltermodal',
@@ -12,7 +10,6 @@ import { MultiplesearchComponent } from '../multiplesearch/multiplesearch.compon
   styleUrls: ['./advfiltermodal.component.css']
 })
 export class AdvfiltermodalComponent {
-  Usernames: string[] = ['Sai', 'Mahesh', 'Sharief'];
   title = 'my-angular-app';
   Advfilterform !: FormGroup;
   submitted = false;

@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TblWithSearchbarsComponent implements OnInit{
   data: any = [];
-  data2: any = [];
+  SearchResultIntbl: any = [];
   UsersList: any = [];
   Usersearch:String='';
   searchform!: FormGroup;
@@ -101,7 +101,7 @@ export class TblWithSearchbarsComponent implements OnInit{
         
         if (inputValue.trim() === '') {
           console.log("this is corresponding Wordvalues");
-          this.data2=[];
+          this.SearchResultIntbl=[];
           this.searchResult = this.originalSearchResult;
           this.showSuggestions = false;
         } else {
@@ -122,8 +122,7 @@ export class TblWithSearchbarsComponent implements OnInit{
       selectSuggestion(suggestion: string): void {
         this.searchform.get('suggestionSearch')?.setValue(suggestion);
         const filteredData = this.data.filter((item:any) => item?.lastName.includes(suggestion));
-        this.data2=filteredData
-        console.log("this is the corresponding respo of searh result",this.data2);
+        this.SearchResultIntbl=filteredData
         this.showSuggestions = false; // Hide suggestions after selection
       }
 }
