@@ -1,34 +1,53 @@
 <div class="container">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight" (click)="closethemodal()" style="cursor: pointer;">X</div>
+  </div>
   <form [formGroup]="Advfilterform" (ngSubmit)="SearchAdvFilterSubmission()">
     <span>
       <div>Mobile Numebr</div>
-      <input type="text" appNumbersOnly class="form-control" formControlName="Mobile">
+      <input type="text" appNumbersOnly class="form-control" formControlName="Mobile" maxlength="10" placeholder="Enter Mobile number">
+      <span style="color: red;" *ngIf="formControls['Mobile'].errors?.['required']&& submitted">Enter mobile number
+      </span>
     </span><br>
     <span>
       <div>Created Date</div>
-      <input type="date" class="form-control" formControlName="createdDate">
+      <input type="date" class="form-control" formControlName="createdDate" max="{{ getMaxDate() }}">
+      <span style="color: red;" *ngIf="formControls['createdDate'].errors?.['required']&& submitted">Enter Created Date</span>
     </span><br>
+    
     <span>
       <div>Updated Date</div>
-      <input type="date" class="form-control" formControlName="updatedData">
+      <input type="date" class="form-control" formControlName="updatedData" max="{{ getMaxDate() }}">
+      <span style="color: red;" *ngIf="formControls['updatedData'].errors?.['required']&& submitted">Enter Updated Date</span>
     </span><br>
     <span>
       <div>User name</div>
-      <select formControlName="username" placeholder="Select UserName">
-        <option value="" disabled selected>&nbsp;Select username</option>
-        <option *ngFor="let name of Usernames" value="{{name}}">{{name}}</option>
-      </select>
-      <br>
-    </span><br>
-    <label>
-      <input type="radio" formControlName="gender" value="male">male
-    </label>
-    <label>
-      <input type="radio" formControlName="gender" value="Female">Female
-    </label>
+      <select formControlName="username">
+        <option selected disabled>&nbsp;Select username</option>
+        <option value="Sai">Sai</option>
+        <option value="Mahesh">Mahesh</option>
+        <option value="Sharief">Sharief</option>
+      </select><br>
+      <span style="color: red;" *ngIf="formControls['username'].errors?.['required']&& submitted">Enter User Name
+      </span>
+    </span>
     <br>
     <div>
+      <div>User Proficiency</div>
+      <label class="radio-label">
+        <input type="radio" formControlName="proficiency" value="fresher" class="radioalign">
+        Fresher
+      </label>
+      <label class="radio-label">
+        <input type="radio" formControlName="proficiency" value="experienced" class="radioalign">
+        Experienced
+      </label>
+    </div>
+    <span style="color: red;" *ngIf="formControls['proficiency'].errors?.['required'] && submitted">Select Proficiency</span>
+    
+    <div>
       <button type="submit" class="btn btn-primary mb-3">Submit</button>
+      <button type="button" class="btn btn-secondary ml-3 mb-3" (click)="RestForm()">Reset</button>
     </div>
   </form>
 </div>

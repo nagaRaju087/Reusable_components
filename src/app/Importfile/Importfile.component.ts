@@ -15,9 +15,7 @@ import { ApiserviceService } from '../apiservice.service';
   styleUrls: ['./Importfile.component.css']
 })
 export class ImportfileComponent {
-  csvDatatojson: any[] = [];
-  jsonDataexcel: any[] = [];
-  jsondata: any[] = [];
+  jsondata:any[]=[];
   showError:boolean=false;
   registration!: FormGroup;
   constructor(public formBuilder: FormBuilder,private api: ApiserviceService) { }
@@ -72,7 +70,7 @@ export class ImportfileComponent {
       const reader = new FileReader();
       reader.onload = (e) => {
         const contents = e.target?.result as string;
-        this.csvDatatojson = this.convertCsvToJson(contents);
+        this.jsondata = this.convertCsvToJson(contents);
       };
       reader.readAsText(file);
     }
@@ -98,7 +96,7 @@ export class ImportfileComponent {
   }
 
   convertAndRender() {
-    console.log('JSON Data:', this.csvDatatojson);
+    console.log('JSON Data:', this.jsondata);
   }
 
 
@@ -111,7 +109,7 @@ export class ImportfileComponent {
       const reader = new FileReader();
       reader.onload = (e) => {
         const data = e.target?.result;
-        this.jsonDataexcel = this.convertExcelToJson(data);
+        this.jsondata = this.convertExcelToJson(data);
       };
       reader.readAsArrayBuffer(file);
     }
@@ -122,13 +120,13 @@ export class ImportfileComponent {
     for (let i = 0; i < workbook.SheetNames.length; i++) {
       const sheetName = workbook.SheetNames[i];
       const sheet = workbook.Sheets[sheetName];
-      const jsonDataexcel = XLSX.utils.sheet_to_json(sheet);
-      singleunit.push(...jsonDataexcel);
+      const jsondata = XLSX.utils.sheet_to_json(sheet);
+      singleunit.push(...jsondata);
     }
     return singleunit;
   }
   convertAndRenderexcel() {
-    console.log('JSON Data:', this.jsonDataexcel);
+    console.log('JSON Data:', this.jsondata);
   }
   filehandle(event: any): void {
     const file = event.target.files[0];
@@ -145,29 +143,11 @@ export class ImportfileComponent {
     }
   }
   fileSubmission() {
-    if (this.jsonDataexcel.length != 0) {
-      console.log("this is respective jsonDataexcel", this.jsonDataexcel)
-      let body={
-        searchedelements:this.jsonDataexcel
-      }
-      this.api.sortAPIcall(body).subscribe((response) => {
-      })
-    } else if (this.csvDatatojson.length != 0) {
-      console.log("this is respective csvDatatojson", this.csvDatatojson)
-      let body={
-        searchedelements:this.csvDatatojson
-      }
-      this.api.sortAPIcall(body).subscribe((response) => {
-      })
-    } else if (this.jsondata.length != 0) {
-      console.log("this is respective json data", this.jsondata)
+      console.log("this is respective jsondata", this.jsondata)
       let body={
         searchedelements:this.jsondata
       }
       this.api.sortAPIcall(body).subscribe((response) => {
       })
-    } else {
-      console.log("nothing to print here")
-    }
   }
 }

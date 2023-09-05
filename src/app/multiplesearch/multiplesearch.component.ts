@@ -24,9 +24,6 @@ const regexArray: { name: string; regex: RegExp }[] = [
     regex: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
   },
   {
-    name: "phone",
-    regex: /^[0-9]+$/
-  }, {
     name: "salary",
     regex: /^[0-9]+$/
   },
@@ -35,7 +32,7 @@ const regexArray: { name: string; regex: RegExp }[] = [
     regex: /^[A-Za-z\s]+$/ // Assumes a simple rule for first names
   },
   {
-    name: "gen",
+    name: "gender",
     regex: /^(male|female|non-binary|other)$/i // Example for gender
   },
   {
@@ -141,6 +138,14 @@ export class MultiplesearchComponent {
         this.Searchideas.push(item)
       }
     }
+    // for(let duplicateremoval of this.selectedvalues){
+    //   for(let duplicateremoval2 of this.Searchideas){
+    //     if(duplicateremoval.key.includes(duplicateremoval2.name)){
+    //       var indexs = this.Searchideas.indexOf(duplicateremoval2);
+    //       this.Searchideas.splice(indexs, 1);
+    //     }
+    //   }
+    // }
     return this.Searchideas
   }
 
@@ -150,6 +155,12 @@ export class MultiplesearchComponent {
       key: suggestion.name,
       value: this.searchform.value.suggestionSearch
     }
+    this.selectedvalues.forEach((item:any) => {
+      if(option.key.includes(item.key)){
+        let index=this.selectedvalues.indexOf(item);
+        this.selectedvalues.splice(index, 1);
+      }
+    });
     this.selectedvalues.push(option);
     this.searchform.reset();
     this.updatedselectedvalues = [...this.selectedvalues]
@@ -160,17 +171,10 @@ export class MultiplesearchComponent {
     this.selectedvalues.splice(indexs, 1);
     var index2 = this.visible_searchResult.indexOf(deletedvalue);
     this.visible_searchResult.splice(index2, 1);
-    let body={
-      searchedelements:this.visible_searchResult
-    }
-    this.api.sortAPIcall(body).subscribe((response) => {
-    })
-  }
-  popvalueofAdvfil(deletedvalue: any) {
     var index3 = this.submittedDatatwo.indexOf(deletedvalue);
     this.submittedDatatwo.splice(index3, 1);
     let body={
-      searchedelements:this.submittedDatatwo
+      searchedelements:this.visible_searchResult
     }
     this.api.sortAPIcall(body).subscribe((response) => {
     })

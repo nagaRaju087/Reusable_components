@@ -20,7 +20,6 @@
   flex: 0 0 100px; /* Set the width of each card */
   height: 150px; /* Set the height of each card */
   background-color:transparent;
-  margin: 0 10px; /* Space between cards */
   transition: transform 0.3s; /* Add smooth transition */
 }
 
@@ -31,7 +30,7 @@
 .carousel-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-left: 0px;
 }
 
 .carousel-button {
@@ -47,12 +46,26 @@
   display: flex;
   justify-content: center; /* Horizontal centering */
   align-items: center;     /* Vertical centering */
-  height: 100vh;           /* Set the height to 100% of the viewport height for full-screen centering */
+  height: 80vh;           /* Set the height to 100% of the viewport height for full-screen centering */
 }
 
 .insidecss {
-  /* Add styling for your card here */
   padding: 20px;
-  /* background-color: #fff; */
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+}
+@media screen and (max-width: 320px) {
+  .carousel-wrapper {
+    overflow: hidden;
+    width: 240px; /* Set the width of the carousel container */
+    height: 200px; /* Set the height of the carousel container */
+    margin: 0 auto; /* Center the carousel horizontally */
+  }
+  .carousel-card.active {
+    transform: scale(1.5); /* Enlarge the active card */
+  }
+  .carousel-card {
+    flex: 0 0 123px; /* Set the width of each card */
+    height: 150px; /* Set the height of each card */
+    background-color:transparent;
+    transition: transform 0.3s; /* Add smooth transition */
+  }
 }

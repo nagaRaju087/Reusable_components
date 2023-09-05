@@ -70,3 +70,6 @@
   .btnWidth{
     width: 230px;
   }
+  .nostringspit{
+    white-space: nowrap
+  }

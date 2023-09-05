@@ -1,0 +1,8 @@
+.radio-label {
+    vertical-align: middle; /* Aligns the text vertically in the middle of the radio button */
+    display: inline-flex; /* Allows horizontal alignment of radio button and text */
+    align-items: center; /* Centers items vertically within the label */
+  }
+  .radioalign{
+    margin-bottom: 5px !important;
+  }

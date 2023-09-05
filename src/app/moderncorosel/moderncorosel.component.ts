@@ -36,11 +36,16 @@ export class ModerncoroselComponent {
   
     // Initially center the active card
     this.updateCarousel();
-  }
-  
+  }  
   updateCarousel() {
-    const offset = -this.currentIndex * (100 + 2 * 10) + ((100 + 2 * 10) / 2); // Centered offset
+    const containerWidth = document.querySelector('.carousel-wrapper')?.clientWidth || 0;
+    const cardWidth = this.cards[this.currentIndex].clientWidth;
+    const activeCardOffset = (containerWidth - cardWidth) / 2;
+  
     const carousel = document.querySelector('.carousel') as HTMLElement;
+  
+    // Calculate the offset to center the active card
+    const offset = -this.currentIndex * cardWidth + activeCardOffset;
   
     // Use `style.transform` to update the CSS transform property
     carousel.style.transform = `translateX(${offset}px)`;
@@ -49,6 +54,9 @@ export class ModerncoroselComponent {
     this.cards.forEach(card => card.classList.remove('active'));
     this.cards[this.currentIndex].classList.add('active');
   }
+  
+  
+  
   prevCard() {
     this.currentIndex = (this.currentIndex - 0 + this.cards.length) % this.cards.length;
     this.updateCarousel();

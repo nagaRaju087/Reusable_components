@@ -38,7 +38,7 @@
 </span>
 <div class="d-flex justify-content-center" *ngIf="showSuggestions">
 <div class="autocomplete-list">
-  <span *ngFor="let result of searchResult" (click)="selectSuggestion(result)">
+  <span *ngFor="let result of searchResult" (click)="selectSuggestion(result)" style="cursor: pointer;">
     <li class="ml-3">search By {{ result.name }}</li>
   </span>
 </div>
@@ -50,7 +50,7 @@
         <div class="d-flex justify-content-center">
           <div>{{selectedvalue.key}}:</div>
           <div>&nbsp;{{selectedvalue.value}}</div>
-          <div (click)="popvalueofAdvfil(selectedvalue)">&times;</div>
+          <div (click)="popvalue(selectedvalue)">&times;</div>
         </div>
       </div>
     </div>

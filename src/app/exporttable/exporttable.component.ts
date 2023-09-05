@@ -98,6 +98,7 @@ export class ExporttableComponent {
     return excelBuffer;
   }
   
+
   generatePDF() {
     console.log("this is corresponding item",this.table_Data?.users);
     const doc = new jsPDF();
@@ -114,4 +115,6 @@ export class ExporttableComponent {
     });
     doc.save('usersdata.pdf');
   }
+
+  
 }

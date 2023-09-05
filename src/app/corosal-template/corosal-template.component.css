@@ -1,10 +1,22 @@
 .container {
-    overflow-x: scroll;
-    display: flex;
-    align-items: center;
-    height: 65vh;
-    scroll-behavior: smooth;
-  }
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%; /* Set the container width to 100% */
+}
+.center-container {
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  height: 70vh; /* Set the container's height to fill the viewport */
+}
+
+.box {
+  scroll-snap-align: start;
+}
+
     
   ::-webkit-scrollbar {
     height: 0;
@@ -32,11 +44,11 @@
   }
   
   .card {
-    width: 233px;
+    width: 220px; /* Adjust the card width to fit within the container */
     height: 200px;
     background: gray;
     border-radius: 10px;
-    margin: 0 4px;
+    margin-right: 10px; /* Add margin between cards */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
@@ -70,13 +82,6 @@
   .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
-  @media screen and (max-width: 790px) {
-    .card {
-      width: 170px;
-      height: 130px;
-    }
-  }
-  
   .leftIcon{
     width: 50px;
     transform: rotate(180deg);
@@ -84,3 +89,80 @@
   .rightIcon{
     width: 50px;
   }
+  .empty-space {
+    flex-shrink: 0;
+    width: 233px; /* Adjust this width to match the width of your cards */
+  }
+  @media screen and (max-width: 426px) {
+    .container {
+      width: 60% !important; /* Set the container width to 100% */
+    }
+    .center-container {
+      height: 80vh; /* Set the container's height to fill the viewport */
+    }
+    .card {
+      width: 110px !important;
+      height: 120px !important;
+    }
+    .leftIcon{
+      width: 30px;
+      transform: rotate(180deg);
+    }
+    .rightIcon{
+      width: 30px;
+    }
+  }
+  @media screen and (max-width: 376px) {
+    .container {
+      width: 45% !important; /* Set the container width to 100% */
+    }
+    .center-container {
+      height: 65vh !important; /* Set the container's height to fill the viewport */
+    }
+    .card {
+      width: 110px !important;
+      height: 120px !important;
+    }
+    .leftIcon{
+      width: 30px;
+      transform: rotate(180deg);
+    }
+    .rightIcon{
+      width: 30px;
+    }
+  }
+  @media screen and (max-width: 790px) {
+    .container {
+      width: 90%; /* Adjust the width for smaller screens */
+    }
+  
+    .card {
+      height: 130px; /* Adjust card height for smaller screens */
+      margin: 0 5px; /* Adjust margin for smaller screens */
+    }
+    .center-container {
+      height: 68vh !important; /* Set the container's height to fill the viewport */
+    }
+  }
+  @media screen and (max-width: 1440px) {
+    .center-container {
+      height: 70vh; /* Set the container's height to fill the viewport */
+    }
+    .card {
+      width: 220px; /* Adjust the card width to fit within the container */
+      height: 200px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .container {
+      width: 81%; /* Set the container width to 100% */
+    }
+    .center-container {
+      height: 80vh; /* Set the container's height to fill the viewport */
+    }
+    .card {
+      width: 200px;
+      height: 190px;
+    }
+  }
+  

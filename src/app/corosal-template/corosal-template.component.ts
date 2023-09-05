@@ -22,6 +22,8 @@ export class CorosalTemplateComponent {
     })
   }
   goNext() {
+    console.log("this is left side",this.scrollContainer.nativeElement.clientWidth);
+    
     this.scrollContainer.nativeElement.scrollBy({ left: this.scrollContainer.nativeElement.clientWidth });
   }
 

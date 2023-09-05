@@ -10,11 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TblWithSearchbarsComponent implements OnInit{
   data: any = [];
+  data2: any = [];
   UsersList: any = [];
   Usersearch:String='';
   searchform!: FormGroup;
   showSuggestions = false;
-  originalSearchResult: string[] =['Ananya', 'Bhavana',  'Charan',  'Deepika',  'Eshwar',  'Gita',  'Harsha',  'Indira',  'Janaki',  'Kalyan',  'Lakshmi',  'Madhavi',  'Naveen',  'Padma',  'Raju', 'Sangeeta', 'Tarun', 'Uma', 'Venkatesh', 'Yamini'];
+  originalSearchResult: string[] =[];
   searchResult: string[] = [];
 
   constructor(private api: ApiserviceService,private formBuilder: FormBuilder){}
@@ -30,7 +31,10 @@ export class TblWithSearchbarsComponent implements OnInit{
         (response) => {
           // Handle the response data here
           this.data = response;
-          console.log("this is corresponding APIS", this.data);
+          this.data=this.data?.users;
+          for(let user of this.data){
+            this.originalSearchResult.push(user?.lastName);
+          }
         },
         (error) => {
           // Handle the error here if needed
@@ -38,7 +42,7 @@ export class TblWithSearchbarsComponent implements OnInit{
         }
       );
   }
-  userApi(userSearch: string, num: any) {
+  search(userSearch: string, num: any) {
     console.log("this is corresponding search",this.Usersearch);
     let userBody;
     let regEx =  /^[a-zA-Z][a-zA-Z0-9\s]*$/;
@@ -93,27 +97,33 @@ export class TblWithSearchbarsComponent implements OnInit{
         );
       }
       onSearchInput(event: any): void {
-        const inputValue = event.target.value;
-    
+        const inputValue = event?.target?.value;
+        
         if (inputValue.trim() === '') {
+          console.log("this is corresponding Wordvalues");
+          this.data2=[];
           this.searchResult = this.originalSearchResult;
           this.showSuggestions = false;
         } else {
           this.searchResult = this.filterSearchResults(inputValue);
-          this.showSuggestions = this.searchResult.length > 0;
+          this.showSuggestions = this.searchResult?.length > 0;
         }
+        
       }
     
       filterSearchResults(inputValue: string): string[] {
         // Implement your filtering logic here
         // Return an array of filtered search results based on inputValue
         return this.originalSearchResult.filter((clg) =>
-          clg.toLowerCase().includes(inputValue.toLowerCase())
+          clg?.toLowerCase()?.includes(inputValue?.toLowerCase())
         );
       }
 
       selectSuggestion(suggestion: string): void {
         this.searchform.get('suggestionSearch')?.setValue(suggestion);
+        const filteredData = this.data.filter((item:any) => item?.lastName.includes(suggestion));
+        this.data2=filteredData
+        console.log("this is the corresponding respo of searh result",this.data2);
         this.showSuggestions = false; // Hide suggestions after selection
       }
 }

@@ -1,10 +1,12 @@
 <div class="container">
     <div class="card">
         <form [formGroup]="registration" (ngSubmit)="onSubmit()" #myform="ngForm">
-            <input type="file" (change)="filehandle($event)" accept=".csv, .json , .xlsx" formControlName="selectedFile" /><br>
+            <div>
+            <input type="file" (change)="filehandle($event)" accept=".csv, .json , .xlsx" formControlName="selectedFile" />
             <span class="error"
                 *ngIf="formControls?.['selectedFile']?.errors?.['required']&&  myform?.submitted && showError">Enter the valid name
             </span><br>
+        </div>
             <button type="submit" (click)="fileSubmission()" class="submitbutton">Submit</button>
         </form>
     </div>
