@@ -137,13 +137,22 @@ export class ImportfileComponent {
         this.onFileSelected(event)
       } else if (fileType === 'text/csv') {
         this.onFileSelectedforcv(event);
-      } else {
+      } else if(fileType==='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'){
         this.onFileSelectedexel(event);
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops',
+          text: 'Seems like you have upload wrong file format',
+        }).then((isConfirm) => {
+          if (isConfirm){
+            this.registration.reset();
+          }
+        });
       }
     }
   }
   fileSubmission() {
-      console.log("this is respective jsondata", this.jsondata)
       let body={
         searchedelements:this.jsondata
       }

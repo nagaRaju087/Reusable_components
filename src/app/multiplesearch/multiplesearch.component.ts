@@ -184,7 +184,6 @@ export class MultiplesearchComponent {
     for (const pair of this.FilteredData) {
       data[pair.key] = pair.value;
     }
-    this.ModeldataService.setData(data);
     this.ModeldataService.openDialog(data, AdvfiltermodalComponent, 'auto');
     this.ModeldataService.getfilterData().subscribe((res) => {
       this.SubmittedDataOfAdvfilter = res[res.length-1];

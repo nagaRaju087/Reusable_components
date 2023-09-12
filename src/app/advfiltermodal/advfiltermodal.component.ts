@@ -13,6 +13,7 @@ export class AdvfiltermodalComponent {
   title = 'my-angular-app';
   Advfilterform !: FormGroup;
   submitted = false;
+  isformreset:boolean=false;
   message: any;
     constructor( public dialogRef: MatDialogRef<AdvfiltermodalComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any,private formBuilder: FormBuilder,private ModeldataService: ModalDataService,private router: Router ) { }
@@ -44,6 +45,7 @@ export class AdvfiltermodalComponent {
       this.submitted = true;
       if (this.Advfilterform.valid)
       {
+        this.isformreset=false;
         this.submitted = false;
         this.dialogRef.close();
       }
@@ -64,10 +66,14 @@ export class AdvfiltermodalComponent {
     }
     
     RestForm(){
+      this.isformreset=true
       this.submitted = false;
       this.Advfilterform.reset();
     }
     closethemodal(){
+      if(this.isformreset){
+        this.ModeldataService.setData(null);
+      }
       this.dialogRef.close(null);
     }
 }

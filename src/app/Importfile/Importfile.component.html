@@ -4,7 +4,7 @@
             <div>
             <input type="file" (change)="filehandle($event)" accept=".csv, .json , .xlsx" formControlName="selectedFile" />
             <span class="error"
-                *ngIf="formControls?.['selectedFile']?.errors?.['required']&&  myform?.submitted && showError">Enter the valid name
+                *ngIf="formControls?.['selectedFile']?.errors?.['required']&&  myform?.submitted && showError">Please Upload a file
             </span><br>
         </div>
             <button type="submit" (click)="fileSubmission()" class="submitbutton">Submit</button>
